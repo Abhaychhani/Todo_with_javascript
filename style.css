@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  list-style: none;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background: #eee;
+}
+.app {
+  max-width: 700px;
+  margin: auto;
+}
+.app h1 {
+  color: #333;
+  color: slateblue;
+}
+.input-header {
+  width: 100%;
+}
+.input-header h1 {
+  color: #555;
+  font-size: 1.3rem;
+}
+.to-do-input {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+#item {
+  width: 80%;
+  font-size: 1rem;
+  padding: 0.3rem 0;
+  border: none;
+  background: white;
+  border-radius: 0.2rem;
+}
+#enter {
+  padding: 0.5rem 0;
+  width: 15%;
+  transition: all 0.3s linear;
+  background: mediumslateblue;
+  color: white;
+  border: none;
+  border-radius: 0.2rem;
+}
+#enter:hover {
+  background: #a597f5;
+}
+.to-do-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.to-do-list li {
+  display: grid;
+  grid-template-columns:75% 25%;
+  grid-template-rows: 1fr;
+  gap: 0 1rem;
+  grid-auto-flow: row;
+  grid-template-areas: ". .";
+  width: 100%;
+}
+li div{
+  display: flex;
+  align-items: center;
+  justify-content:space-between; 
+  gap: 0.5rem;
+}
+li div:nth-child(1){
+  background: rgb(255, 255, 255);
+    padding:0 0.7rem;
+    border-radius: 0.2rem;
+}
+li div:nth-child(2){
+  justify-content: center;
+}
+li div .input-box {
+  width: 95%;
+  border: none;
+  padding: 0.4rem;
+  padding-left: 1rem;
+  background: none;
+}
+li div span{
+  padding: 0.2rem 1rem;
+  border: 1px solid mediumslateblue;
+  border-radius: 0.2rem;
+}
+li div .edit {
+  color: mediumslateblue;
+}
+li div .delete {
+  background: mediumslateblue;
+  color: white;
+}
+li .status{
+  position: relative;
+  appearance: none;
+  height:50%;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  border: 1px solid #444;
+  box-shadow: 0 0 0 3px #eee inset;
+}
+
+li .status:checked{
+  background:limegreen; 
+}
+li .status:checked ~ .input-box{
+  text-decoration: line-through;
+}
