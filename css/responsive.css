@@ -1,0 +1,44 @@
+@media screen and (max-width: 1200px) {
+  main {
+    padding: 0 3rem;
+  }
+  #addTask{
+    right:3rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  main {
+    padding: 0 1rem;
+  }
+  #themeBtn {
+    height: 35px;
+    width: 80px;
+    font-size: 14px;
+  }
+  #addTask {
+    right:1rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 12px;
+    background: var(--primary-color);
+  }
+
+  #addTask span {
+    display: none;
+  }
+  #addTask:after,
+  #addTask:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 30%;
+    width: 2px;
+    background: var(--white);
+  }
+  #addTask:before {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}

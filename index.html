@@ -3,24 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>ToDo</title>
+     <link rel="stylesheet" href="./css/style.css">
+     <link rel="stylesheet" href="./css/responsive.css">
   </head>
   <body>
-    <main class="app">
-      <h1>My Todo List</h1>
-      <div class="input-header">
-        <h1><span id="date"></span></h1>
-        <div class="to-do-input">
-          <input type="text" id="item" placeholder="Enter a task..." /><button
-            id="enter"
-          >
-            Enter
-          </button>
+    <main>
+      <header>
+        <h1 class="logo">to<span>do</span></h1>
+        <nav>
+          <button id="themeBtn">theme</button>
+          <div class="theme-colors">
+            <span style="background-color:slateblue;"></span>
+            <span style="background:rgb(107, 50, 199);"></span>
+            <span style="background-color:rgb(132, 23, 196);"></span>
+            <span style="background-color:rgb(176, 5, 199);"></span>
+            <span style="background-color:hotpink;"></span>
+            <span style="background-color:rgb(0, 134, 7);"></span>
+            <span style="background-color:rgb(18, 160, 79);"></span>
+            <span style="background-color:rgb(25, 201, 101);"></span>
+            <span style="background-color:rgb(0, 223, 148);"></span>
+          </div>
+        </nav>
+      </header>
+      <section class="task-container">
+        <h1>Tasks.</h1>
+        <div id="task-list">
+          <p>Task not create yet.</p>
         </div>
-      </div>
-      <div class="to-do-list"></div>
+      </section>
+      <div id="addTask"><span>Add Task</span></div>
     </main>
+    <div id="taskDialog">
+      <input type="text" class="task-title" name="title" placeholder="Task Title">
+      <textarea name="content" class="task-content" placeholder="Todo Task" rows="4"></textarea>
+      <div class="task-dialog-btns">
+        <button id="saveTodo">Save</button>
+        <button id="cancleTodo">Cancle</button>
+      </div>
+    </div>
   </body>
-  <script src="app.js"></script>
+  <script src="./js/app.js" type="module"></script>
 </html>
