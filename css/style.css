@@ -144,35 +144,60 @@ li.task-list-item{
     text-transform: capitalize;
     align-items: center;
 }
-.item-title span.item-date{
-    font-family: monospace;
+.item-title .status-text{
+    background: yellow;
     font-weight: 500;
+    padding: 0.3rem;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+}
+.item-title .status-text.active{
+    background: lime;
 }
 .item-icons{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     gap: 1rem;
 }
-.item-icons img{
+.item-icons span.item-date{
+    align-self: flex-end;
+    font-family: monospace;
+    font-weight: 500;
+    font-size: 1rem;
+}
+.item-icons span{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.item-icons span .taskStatusInput{
+    height: 30px;
+    aspect-ratio: 1/1;
+    background-color: red;
+    accent-color: var(--primary-color);
+}
+.item-icons span img{
     height: 30px;
     cursor: pointer;
     transition: all 0.4s;
     padding: 0.2rem;
     background: white;
     border-radius: 4px;
-    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 2px 0 var(--primary-color);
 }
-.item-icons img.item-delete:hover{
+.item-icons span img.item-delete:hover{
     filter:invert(1);
     background: aqua;
 }
-.item-icons img.item-edit:hover{
+.item-icons span img.item-edit:hover{
     background: var(--primary-color);
 
 }
 
 .item-content{
-
+    text-wrap: wrap;    
 }
 
 

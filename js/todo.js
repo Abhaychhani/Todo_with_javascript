@@ -7,8 +7,6 @@ class Todo {
     this.allTask=this.getSavedTodo() || []; 
     this.taskList=document.getElementById('task-list');
     this.renderTodo();
-    this.deleteIcons=document.querySelectorAll('.item-delete');
-    this.editIcons=document.querySelectorAll('.item-edit');
   }
   getSavedTodo(){
     return JSON.parse(localStorage.getItem("allTodos"));
@@ -19,7 +17,7 @@ class Todo {
         title:this.taskTitle.value,
         content:this.taskContent.value,
         date:new Date().toLocaleDateString(),
-        status:"pending"
+        status:false
     }
     this.allTask.push(task);
     localStorage.setItem('allTodos',JSON.stringify(this.allTask));
@@ -41,12 +39,20 @@ class Todo {
         const {title,content,date,status} = task;
         this.taskList.innerHTML += `
         <li class="task-list-item">
-          <h3 class="item-title"><span>${title}</span> <span class="item-date">${date}</span></h3>
+          <h3 class="item-title">
+            <span>${title}</span>
+            ${status ? "<span class='status-text active'>Completed<span>" : "<span class='status-text'>Pending<span>" }
+            
+          </h3>
           <p class="item-content">${content}</p>
           
           <span class="item-icons">
-          <img class="item-edit" src="./img/edit.png" />
-          <img class="item-delete" src="./img/delete.png" />
+          <span class="item-date">${date}</span>
+          <span>
+            <input type="checkbox" ${status ? "checked" : ""} class="taskStatusInput" />
+            <img class="item-edit" src="./img/edit.png" />
+            <img class="item-delete" src="./img/delete.png" />
+          </span>
           </span>
         </li>
         `
@@ -58,6 +64,11 @@ class Todo {
     this.saveTodo()
     this.deleteTodo(index);
     localStorage.setItem("allTodos",JSON.stringify(this.allTask))
+    this.renderTodo()
+  }
+  setTaskStatus(index,statusVal){
+    this.allTask[index].status=statusVal;
+    localStorage.setItem('allTodos',JSON.stringify(this.allTask));
     this.renderTodo()
   }
   deleteTodo(index) {

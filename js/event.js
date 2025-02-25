@@ -9,11 +9,14 @@ class Event {
     this.ui.themeBtn.addEventListener("click", () => this.ui.toggleThemeDialog());
     this.ui.themeColors.addEventListener("click", (event) => this.ui.setTheme(event));
     // todo dialog listeners
-    this.ui.addTaskBtn.onclick = ()=>{this.ui.showTaskDialog()};
+    this.ui.addTaskBtn.onclick = ()=>{
+      this.ui.showTaskDialog()
+      this.ui.todoBtn.innerText="Save";
+    };
     this.ui.cancleTodoBtn.onclick = ()=>{this.ui.hideTaskDialog()}
     // save todo
     this.ui.todoBtn.addEventListener("click", () => {
-      if(this.ui.todoBtn.innerText.toLowerCase()==='save'){
+      if(this.ui.todoBtn.innerText.toLowerCase() === 'save'){
         this.todo.saveTodo()
       }
     });
@@ -28,6 +31,15 @@ class Event {
           this.todo.deleteTodo(index);
         }
       }
+      // update task status
+      
+      if(e.target.classList.contains("taskStatusInput")){
+        const clickedInput = e.target;
+        const statusVal=e.target.checked;
+        const allStatusInputs=Array.from(document.querySelectorAll('.taskStatusInput'));
+        const index = allStatusInputs.indexOf(clickedInput);
+        this.todo.setTaskStatus(index,statusVal);
+      }
       // update task
       if(e.target.classList.contains("item-edit")){
         const clickedEditIcon = e.target;
@@ -35,11 +47,11 @@ class Event {
         const index = allEditIcons.indexOf(clickedEditIcon);
         this.ui.todoBtn.innerText="Update";
         this.ui.showTaskDialog();
-        let slicedTask = this.todo.allTask.slice(index,index+1)
-        const {title,content} = slicedTask[0]
+        let slicedTask = this.todo.allTask[index]
+        const {title,content} = slicedTask;
         this.ui.taskTitle.value=title;
         this.ui.taskContent.value=content;
-        if(index !== -1 && this.ui.todoBtn.innerText.toLowerCase()==='update'){
+        if(index !== -1 && this.ui.todoBtn.innerText.toLowerCase() === 'update'){
           this.ui.todoBtn.onclick= () => this.todo.updateTodo(index);
         }
         
