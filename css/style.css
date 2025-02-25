@@ -136,7 +136,7 @@ li.task-list-item{
     flex-direction: column;
     gap: 0.5rem;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
-    height:6rem;
+    height:6.3rem;
 }
 .item-title{
     display: flex;
