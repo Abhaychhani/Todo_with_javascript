@@ -54,7 +54,11 @@ class Todo {
     }
   }
   updateTodo(index) {
-    console.log("todo updated",index);
+    if(!this.ui.validateTodo()) return;
+    this.saveTodo()
+    this.deleteTodo(index);
+    localStorage.setItem("allTodos",JSON.stringify(this.allTask))
+    this.renderTodo()
   }
   deleteTodo(index) {
     this.allTask.splice(index,1)
