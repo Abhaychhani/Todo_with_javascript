@@ -7,6 +7,8 @@ class Todo {
     this.allTask=this.getSavedTodo() || []; 
     this.taskList=document.getElementById('task-list');
     this.renderTodo();
+    this.deleteIcons=document.querySelectorAll('.item-delete');
+    this.editIcons=document.querySelectorAll('.item-edit');
   }
   getSavedTodo(){
     return JSON.parse(localStorage.getItem("allTodos"));
@@ -51,8 +53,14 @@ class Todo {
           });
     }
   }
-  updateTodo() {}
-  deleteTodo() {}
+  updateTodo(index) {
+    console.log("todo updated",index);
+  }
+  deleteTodo(index) {
+    this.allTask.splice(index,1)
+    localStorage.setItem('allTodos',JSON.stringify(this.allTask));
+    this.renderTodo()
+  }
 }
 
 export default Todo;

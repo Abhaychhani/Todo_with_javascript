@@ -111,13 +111,14 @@ nav{
 }
 #task-list{
     position: relative;
-    height:calc(100% - 1.8rem);
+    height:calc(100% - 3.8rem);
     width: 100%;
     list-style: none;
     display: grid;
     grid-template-columns: repeat(1,1fr);
-    row-gap: 1rem;
-    padding: 0 1rem;
+    align-content: start;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
     margin: 1rem 0;
     overflow-y: auto;
 }
@@ -135,6 +136,7 @@ li.task-list-item{
     flex-direction: column;
     gap: 0.5rem;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+    height:6rem;
 }
 .item-title{
     display: flex;
