@@ -43,8 +43,8 @@ class Todo {
           <p class="item-content">${content}</p>
           
           <span class="item-icons">
-          <img class="item-edit" src="../img/edit.png" />
-          <img class="item-delete" src="../img/delete.png" />
+          <img class="item-edit" src="./img/edit.png" />
+          <img class="item-delete" src="./img/delete.png" />
           </span>
         </li>
         `
