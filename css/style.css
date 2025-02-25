@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
-    outline: none;
 }
 :root{
     --primary-color:rgb(115, 94, 250);
@@ -114,13 +113,68 @@ nav{
     position: relative;
     height:calc(100% - 1.8rem);
     width: 100%;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(1,1fr);
+    row-gap: 1rem;
+    padding: 0 1rem;
+    margin: 1rem 0;
+    overflow-y: auto;
 }
-#task-list p{
+#task-list > p{
     text-align: center;
     padding: 2rem;
     font-size: 2rem;
 }
 
+/* task list item */
+li.task-list-item{
+    position: relative;
+    padding: 0.4rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+}
+.item-title{
+    display: flex;
+    justify-content: space-between;
+    text-transform: capitalize;
+    align-items: center;
+}
+.item-title span.item-date{
+    font-family: monospace;
+    font-weight: 500;
+}
+.item-icons{
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+.item-icons img{
+    height: 30px;
+    cursor: pointer;
+    transition: all 0.4s;
+    padding: 0.2rem;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
+}
+.item-icons img.item-delete:hover{
+    filter:invert(1);
+    background: aqua;
+}
+.item-icons img.item-edit:hover{
+    background: var(--primary-color);
+
+}
+
+.item-content{
+
+}
+
+
+/* add task btn */
 #addTask{
     cursor: pointer;
     position: absolute;
@@ -194,6 +248,14 @@ nav{
     padding: 0.5rem;
     border-radius: 4px;
     font-size: 1.3rem;
+}
+#saveTodo:focus{
+    outline: 2px solid var(--primary-color);
+    outline-offset: 1px;
+}
+#cancleTodo:focus{
+    outline: 2px solid red;
+    outline-offset: 1px;
 }
 #saveTodo{
     background: var(--primary-color);

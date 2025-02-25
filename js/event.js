@@ -1,22 +1,18 @@
 class Event {
   constructor(root) {
     this.root = root;
+    this.todo=this.root.todo;
+    this.ui=this.root.ui;
 
-    document.addEventListener("click", (e) => {
-      if (
-        this.root.themeColors.classList.contains("active") &&
-        e.target !== this.root.themeBtn &&
-        e.target !== this.root.themeColors &&
-        !Array.from(this.root.allSpan).includes(e.target)
-      ) {
-        this.root.themeColors.classList.remove("active");
-      }
-    });
-    this.root.themeBtn.addEventListener("click", () => this.root.toggleThemeDialog());
-    this.root.themeColors.addEventListener("click", (event) => this.root.setTheme(event));
-    this.root.addTaskBtn.addEventListener("click", () => {
-      this.root.taskDialog.setAttribute("style", "visibility:visible;");
-    });
+    // theme colors event listeners
+    document.addEventListener("click", (e) => this.ui.hideThemeDialog(e));
+    this.ui.themeBtn.addEventListener("click", () => this.ui.toggleThemeDialog());
+    this.ui.themeColors.addEventListener("click", (event) => this.ui.setTheme(event));
+    // todo dialog listeners
+    this.ui.addTaskBtn.onclick = ()=>{this.ui.showTaskDialog()};
+    this.ui.cancleTodoBtn.onclick = ()=>{this.ui.hideTaskDialog()}
+    // crud oparation todos
+    this.ui.todoBtn.addEventListener("click", () => this.todo.saveTodo());
   }
 }
 export default Event;

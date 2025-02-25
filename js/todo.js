@@ -1,36 +1,55 @@
 class Todo {
   constructor(root) {
     this.root = root;
-    this.taskDialog = this.root.taskDialog;
-    this.taskTitle = document.querySelector(".task-title");
-    this.taskContent = document.querySelector(".task-content");
-    this.saveTodoBtn = document.getElementById("saveTodo");
-    this.cancleTodoBtn = document.getElementById("cancleTodo");
-    this.allTask=[];
-    // event listeners
-    this.cancleTodoBtn.addEventListener("click", () => {
-      this.taskDialog.setAttribute("style", "visibility:hidden;");
-    });
-    this.saveTodoBtn.addEventListener("click", () => this.saveTodo());
+    this.ui=this.root.ui; 
+    this.taskTitle=this.ui.taskTitle;   
+    this.taskContent=this.ui.taskContent;   
+    this.allTask=this.getSavedTodo() || []; 
+    this.taskList=document.getElementById('task-list');
+    this.renderTodo();
+  }
+  getSavedTodo(){
+    return JSON.parse(localStorage.getItem("allTodos"));
   }
   saveTodo() {
-    if (!this.taskTitle.value) {
-      this.taskTitle.style.outline = "1px solid red";
-      return;
-    }
-    if (!this.taskContent.value) {
-      this.taskContent.style.outline = "1px solid red";
-      return;
-    }
-
+    if(!this.ui.validateTodo()) return;
     const task = {
         title:this.taskTitle.value,
         content:this.taskContent.value,
+        date:new Date().toLocaleDateString(),
+        status:"pending"
     }
     this.allTask.push(task);
-    localStorage.setItem('all-tasks',JSON.stringify(this.allTask));
+    localStorage.setItem('allTodos',JSON.stringify(this.allTask));
     this.taskTitle.value="";
     this.taskContent.value="";
+    this.ui.hideTaskDialog();
+    this.renderTodo();
+  }
+  renderTodo(){
+    if(this.allTask.length===0){
+      this.taskList.innerHTML=`
+        <p>Task not create yet.</p>
+      `;
+      return;
+    }else{
+      this.taskList.innerHTML="";
+
+      this.allTask.forEach(task => {
+        const {title,content,date,status} = task;
+        this.taskList.innerHTML += `
+        <li class="task-list-item">
+          <h3 class="item-title"><span>${title}</span> <span class="item-date">${date}</span></h3>
+          <p class="item-content">${content}</p>
+          
+          <span class="item-icons">
+          <img class="item-edit" src="../img/edit.png" />
+          <img class="item-delete" src="../img/delete.png" />
+          </span>
+        </li>
+        `
+          });
+    }
   }
   updateTodo() {}
   deleteTodo() {}
