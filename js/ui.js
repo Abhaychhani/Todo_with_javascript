@@ -9,6 +9,8 @@ class Ui {
     this.cancleTodoBtn = document.getElementById("cancleTodo");
     this.taskTitle = document.querySelector(".task-title");
     this.taskContent = document.querySelector(".task-content");
+    this.todoContainer = document.querySelector(".task-container");
+    this.todoDetails= document.querySelector('.todo-details');
     this.todoBtn = document.getElementById("saveTodo");
     this.getTheme()
   }
